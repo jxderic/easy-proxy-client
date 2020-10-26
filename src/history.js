@@ -1,3 +1,3 @@
-import { createBrowserHistory } from 'history'
+import { createHashHistory } from 'history'
 
-export default createBrowserHistory()
+export default createHashHistory()  // createBrowserHistory 暂时先hash模式
