@@ -1,0 +1,19 @@
+.site-layout-background {
+  height: 500px;
+  background-color: #fff;
+
+  .btn_wrap {
+    margin-bottom: 10px;
+  }
+  .add_btn {
+    margin-right: 10px;
+  }
+
+  .status_start {
+    color: green;
+  }
+
+  .status_stop {
+    color: red;
+  }
+}

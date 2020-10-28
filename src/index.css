@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  height: 100%;
+}
+
+.ant-layout.ant-layout-has-sider {
+  height: 100%;
+}
+
+.main_site-layout-background__2eAtu {
+  height: 100%;
+}
