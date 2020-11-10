@@ -4,12 +4,13 @@ import logo from '@/assets/image/logo.jpg'
 import style from './style/login.module.scss'
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { signin } from '@/api/user'
 
 export default class Login extends Component {
   constructor () {
     super()
-    this.onFinish = (values) => {
-      console.log('Success:', values);
+    this.onFinish = async (values) => {
+      const { data } = await signin(values)
     };
     this.onFinishFailed = (errorInfo) => {
       console.log('Failed:', errorInfo);
@@ -51,7 +52,7 @@ export default class Login extends Component {
             </Form.Item>
 
             <Form.Item {...tailLayout}>
-              <Button type="primary" block>
+              <Button type="primary" block htmlType="submit">
                 提交
               </Button>
             </Form.Item>
