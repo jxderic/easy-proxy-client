@@ -3,7 +3,7 @@
  * @Author: jinxiaodong
  * @Date: 2020-10-23 14:32:34
  * @LastEditors: jinxiaodong
- * @LastEditTime: 2020-10-29 16:30:29
+ * @LastEditTime: 2020-11-18 16:09:19
  */
 import React, { Component } from 'react'
 import { Layout, Menu } from 'antd';
@@ -12,8 +12,8 @@ import logo from '@/assets/image/logo.jpg'
 import { Switch, Redirect, Route, withRouter, Link } from 'react-router-dom'
 import ProjectManageAsync from './ProjectManage/PeojectManage.async'
 import PluginManageAsync from './PluginManage/PluginManage.async'
-import { ProjectOutlined, BugOutlined } from '@ant-design/icons';
-
+import { ProjectOutlined, BugOutlined, UserOutlined } from '@ant-design/icons';
+import { useInfo } from '@/api/user'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -22,7 +22,19 @@ class Main extends Component {
     super(props)
     const { location } = props
     const match = /^\/main\/(.*?)(\/.*)?$/.exec(location.pathname)
-	  this.page = match ? match[1] : 'project-manage'
+    this.page = match ? match[1] : 'project-manage'
+    this.state = {
+      username: 'jinxiaodong'
+    }
+  }
+  getUseInfo = async () => {
+    const { data } = await useInfo()
+    this.setState({
+      username: data.username
+    })
+  }
+  componentDidMount() {
+    this.getUseInfo()
   }
   render() {
     return (
@@ -55,7 +67,10 @@ class Main extends Component {
           </Menu>
         </Sider>
         <Layout className={style['site-layout']}>
-          <Header className={style['site-layout-background']} style={{ padding: 0 }} />
+          <Header className={style['site-layout-background']} >
+            <UserOutlined style={{marginRight: 10}}/>
+            {this.state.username}
+          </Header>
           <Content>
             <Switch>
               <Route path="/main/project-manage" component={ProjectManageAsync} />

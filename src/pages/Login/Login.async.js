@@ -1,3 +1,3 @@
 import asyncComp from '../../components/AsyncComponent'
 
-export default asyncComp(() => import('./Login'))
+export default asyncComp(() => import('./container/LoginContainer'))

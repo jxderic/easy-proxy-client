@@ -2,15 +2,24 @@ import React, { Component } from 'react'
 import logo from '@/assets/image/logo.jpg'
 // import cs from 'classnames'
 import style from './style/login.module.scss'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { signin } from '@/api/user'
+import history from '@/history'
+import PropTypes from "prop-types";
 
 export default class Login extends Component {
-  constructor () {
-    super()
+  static propTypes = {
+    changeToken: PropTypes.func.isRequired
+  };
+  constructor (props) {
+    super(props)
+    const { changeToken } = props;
     this.onFinish = async (values) => {
       const { data } = await signin(values)
+      message.success('登录成功')
+      changeToken(data.access_token)
+      if (data) history.push('/main')
     };
     this.onFinishFailed = (errorInfo) => {
       console.log('Failed:', errorInfo);

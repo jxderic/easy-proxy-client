@@ -161,34 +161,34 @@ export default class ProjectList extends Component {
             <Button disabled={this.state.deleteDisabled}>删除</Button>
           </div>
           <Table dataSource={data} rowSelection={rowSelection} pagination={pagination}>
-            <Column title="名称" dataIndex="name" key="_id" />
-            <Column title="配置文件" dataIndex="configs" key="_id" render={
+            <Column title="名称" dataIndex="name" key="1" />
+            <Column title="配置文件" dataIndex="configs" key="2" render={
               configs => (
                 <Select defaultValue={this.filterConfig(configs)._id} style={{ width: 120 }} onChange={this.handleChange}>
                   {
                     configs.map(item => (
-                      <Option value={item._id}>{item.name}</Option>
+                      <Option value={item._id} key={item._id}>{item.name}</Option>
                     ))
                   }
                 </Select>
               )
             }/>
-            <Column title="地址" dataIndex="port" key="_id" render={
+            <Column title="地址" dataIndex="port" key="3" render={
               port => (
                 <span>{`http://emptycup.hikvision.com.cn:${port}`}</span>
               )
             } />
-            <Column title="目的地" dataIndex="configs" key="_id" render={
+            <Column title="目的地" dataIndex="configs" key="4" render={
               configs => (
                 <span>{this.filterConfig(configs).configDetail}</span>
               )
             } />
-            <Column title="状态" dataIndex="status" key="_id" render={
+            <Column title="状态" dataIndex="status" key="5" render={
               status => (
                 <span className={status ? style.status_start : style.status_stop}>{status ? '已启用' : '已停止'}</span>
               )
             } />
-            <Column title="操作" dataIndex="_id" key="_id" render={
+            <Column title="操作"  key="6" render={
               id => (
                 <>
                 <Space split={<Divider type="vertical" />}>
@@ -199,7 +199,7 @@ export default class ProjectList extends Component {
                 </>
               )
             } />
-            <Column title="编辑" dataIndex="_id" key="_id" render={
+            <Column title="编辑" key="7" render={
               id => (
                 <>
                   <Space split={<Divider type="vertical" />}>

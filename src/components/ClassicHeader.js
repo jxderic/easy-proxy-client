@@ -19,7 +19,6 @@ class Classicheader extends Component {
   render() {
     const { location, back, title, description, history } = this.props
     const matchs = matchRoutes(routeConfig, location.pathname)
-    console.log(matchs)
     return (
       <div className={style['bread-container']}>
         <div className={style.breadcrumb}>
